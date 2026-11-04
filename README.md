@@ -2,9 +2,11 @@
 
 **Find the content that breaks your UI. Then prove the fix.**
 
-[Watch the 2:42 demo](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-demo.mp4) · [45-second cut](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-X-45s.mp4) · [Matching demo evidence ZIP](demo/recorded-demo-evidence.zip) · [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
+[Hosted review demo](https://break-it-osmar-b946ca82c398.herokuapp.com/) · [Watch the 2:42 demo](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-demo.mp4) · [45-second cut](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-X-45s.mp4) · [Matching demo evidence ZIP](demo/recorded-demo-evidence.zip) · [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
 
 ![BREAK IT — real Meta candidate and Chromium proof](demo/preview.png)
+
+Hosted review access uses username **judge** and the separate demo password supplied privately to reviewers. Fresh Meta scenario generation, patching from 3 real PNGs, Chromium execution and ZIP export were verified on Heroku on November 4, 2026: **3/9 → 9/9**, 23 assertion failures fixed, 0 measured regressions. Pack `23f6981bb53e307b` is unchanged. The downloaded ZIP was independently replayed outside Heroku with the same 3/9 and 9/9 scores. [Hosted verification receipts](demo/heroku-verification.json) · [Hosted evidence ZIP](demo/heroku-evidence.zip).
 
 The videos are edited actual app / Chromium captures with synthetic narration. The recorded demo uses fresh Meta calls and improves **2/9 → 9/9** on the same pack, fixing 25 assertion failures with 0 measured regressions. Its standalone ZIP was independently rerun. Earlier archived examples below have different generated packs and scores. This is declared-layout verification on intentionally fragile examples, not a general repair benchmark.
 
@@ -133,14 +135,14 @@ npm start
 # Open http://127.0.0.1:4174 — UI and API on the same origin.
 ```
 
-Optional container (Docker build not exercised on the author's Mac, which has no Docker runtime):
+Optional container (built and executed successfully on Heroku; the author's Mac has no local Docker runtime):
 
 ```bash
 docker build -t break-it .
 docker run --rm --init --ipc=host -p 127.0.0.1:4174:4174 --env-file .env.local break-it
 ```
 
-The Playwright image version matches the pinned package, following [Playwright's Docker guidance](https://playwright.dev/docs/next/docker). `.dockerignore` excludes credentials and local artifacts. The container runs as `pwuser`. Keep the loopback port binding for local use. Set DEMO_PASSWORD in the server environment to enable HTTP Basic access (username judge). Heroku startup requires this password. This MVP has no per-user quotas or multi-tenant isolation; share access only with intended reviewers. No public interactive server is claimed in this submission.
+The Playwright image version matches the pinned package, following [Playwright's Docker guidance](https://playwright.dev/docs/next/docker). `.dockerignore` excludes credentials and local artifacts. The container runs as `pwuser`. Keep the loopback port binding for local use. Set DEMO_PASSWORD in the server environment to enable HTTP Basic access (username judge). Heroku startup requires this password. This MVP has no per-user quotas or multi-tenant isolation; share access only with intended reviewers. The hosted review demo above requires the separate access password.
 
 ## What was built and what is reused
 
@@ -148,10 +150,10 @@ Built for this hackathon: text-slot instrumentation and reviewed invariant workf
 
 ## Security and execution scope
 
-Designed for a local, single-user workbench processing owned static components. Sanitization, disabled script execution and blocked network requests reduce exposure; they are not a security boundary for a public multi-user browser execution service. Exported screenshots and component source may contain the data you supplied. Inspect them before sharing.
+Designed for a local or password-protected, single-user workbench processing owned static components. Sanitization, disabled script execution and blocked network requests reduce exposure; they are not a security boundary for a public multi-user browser execution service. Exported screenshots and component source may contain the data you supplied. Inspect them before sharing.
 
 
-## Heroku demo deployment (configuration prepared; not yet deployed)
+## Heroku deployment and review access
 
 [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
 

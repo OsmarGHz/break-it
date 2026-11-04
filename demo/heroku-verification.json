@@ -1,0 +1,94 @@
+{
+  "checkedAt": "2026-11-04T23:50:15.594Z",
+  "url": "https://break-it-osmar-b946ca82c398.herokuapp.com",
+  "health": {
+    "ok": true,
+    "metaConfigured": true,
+    "model": "muse-spark-1.3"
+  },
+  "browser": "Chromium 156.0.8078.80",
+  "packHash": "23f6981bb53e307b",
+  "originalSummary": {
+    "totalScenarios": 9,
+    "passedScenarios": 3,
+    "failedScenarios": 6,
+    "inconclusiveScenarios": 0,
+    "errorScenarios": 0,
+    "totalAssertions": 117,
+    "passedAssertions": 94,
+    "failedAssertions": 23,
+    "inconclusiveAssertions": 0,
+    "errorAssertions": 0
+  },
+  "candidateSummary": {
+    "totalScenarios": 9,
+    "passedScenarios": 9,
+    "failedScenarios": 0,
+    "inconclusiveScenarios": 0,
+    "errorScenarios": 0,
+    "totalAssertions": 117,
+    "passedAssertions": 117,
+    "failedAssertions": 0,
+    "inconclusiveAssertions": 0,
+    "errorAssertions": 0
+  },
+  "comparisonSummary": {
+    "scenariosFixed": 6,
+    "scenariosRegressed": 0,
+    "scenariosStillFailing": 0,
+    "scenariosStillPassing": 3,
+    "scenariosInconclusiveOrError": 0,
+    "assertionsFixed": 23,
+    "assertionsRegressed": 0,
+    "assertionsStillFailing": 0,
+    "assertionsStillPassing": 94
+  },
+  "packProof": {
+    "original": "23f6981bb53e307b",
+    "candidate": "23f6981bb53e307b",
+    "matchesExactly": true
+  },
+  "source": "muse_spark",
+  "scenarioReceipt": {
+    "receiptId": "rcpt_ad20cf82-27e",
+    "operation": "generate_scenarios",
+    "provider": "meta_model_api",
+    "endpoint": "https://api.meta.ai/v1/chat/completions",
+    "requestedModel": "muse-spark-1.3",
+    "respondedModel": "muse-spark-1.3",
+    "responseId": "chatcmpl-01a1a8f7-bc5c-76f9-b379-2c9c16e6edc8",
+    "timestamp": "2026-11-04T23:49:30.378Z",
+    "durationMs": 25534,
+    "reasoningEffort": "medium",
+    "imagesAttached": 0,
+    "usage": {
+      "promptTokens": 3190,
+      "completionTokens": 3964,
+      "totalTokens": 7154
+    },
+    "finishReason": "stop"
+  },
+  "patchReceipt": {
+    "receiptId": "rcpt_9b25b511-0dd",
+    "operation": "propose_css_patch",
+    "provider": "meta_model_api",
+    "endpoint": "https://api.meta.ai/v1/chat/completions",
+    "requestedModel": "muse-spark-1.3",
+    "respondedModel": "muse-spark-1.3",
+    "responseId": "chatcmpl-01a1a8f8-5c2f-7203-a81f-13b04306e310",
+    "timestamp": "2026-11-04T23:50:11.327Z",
+    "durationMs": 37965,
+    "reasoningEffort": "high",
+    "imagesAttached": 3,
+    "usage": {
+      "promptTokens": 15704,
+      "completionTokens": 5560,
+      "totalTokens": 21264
+    },
+    "finishReason": "stop"
+  },
+  "zipBytes": 1546342,
+  "candidateId": "cand_d555d3fe-b",
+  "originalRunId": "run_mw2rqnxl_afc35d",
+  "candidateRunId": "run_cand_mw2rrjzx_0a01aa"
+}

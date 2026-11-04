@@ -2,6 +2,12 @@
 
 **Find the content that breaks your UI. Then prove the fix.**
 
+[Watch the 2:42 demo](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-demo.mp4) · [45-second cut](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-X-45s.mp4) · [Matching demo evidence ZIP](demo/recorded-demo-evidence.zip) · [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
+
+![BREAK IT — real Meta candidate and Chromium proof](demo/preview.png)
+
+The videos are edited actual app / Chromium captures with synthetic narration. The recorded demo uses fresh Meta calls and improves **2/9 → 9/9** on the same pack, fixing 25 assertion failures with 0 measured regressions. Its standalone ZIP was independently rerun. Earlier archived examples below have different generated packs and scores. This is declared-layout verification on intentionally fragile examples, not a general repair benchmark.
+
 Adversarial stress-testing workbench for static HTML/CSS components, built for the Meta Global AI Developer Hackathon (November 4, 2026).
 
 `Muse Spark 1.3` proposes realistic adversarial content/viewport scenarios and scoped CSS patches; **Playwright Chromium** executes every scenario in an isolated offline browser context, evaluates explicit geometric layout assertions, captures real PNG evidence, and replays **precisely the same locked scenario and assertion pack** against any proposed CSS fix. Model claims never mark a test as passed.

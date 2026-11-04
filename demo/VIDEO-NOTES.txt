@@ -1,0 +1,9 @@
+BREAK IT
+Full demo: 2:42; X cut: 0:45.
+1920x1080 H.264 / AAC.
+Edited actual app captures + exact Chromium PNGs from a real Meta run on 2026-11-04.
+Voice: macOS Samantha synthetic narration. Not an uncut live recording.
+Run pack: ee4cde8c8d1f5cc9. Original 2/9; unmodified Muse Spark candidate 9/9.
+The scope is declared geometric layout assertions on static HTML/CSS; no general repair, accessibility or production-readiness certification.
+Matching demo ZIP: BREAK-IT-recorded-demo-evidence.zip.
+Public code: https://github.com/OsmarGHz/break-it

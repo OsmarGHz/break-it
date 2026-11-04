@@ -1,0 +1,159 @@
+1
+00:00:00,000 --> 00:00:04,649
+A CSS fix from an AI is still a guess until a browser tests it.
+
+2
+00:00:04,649 --> 00:00:07,439
+BREAK IT turns that guess into a reproducible experiment.
+
+3
+00:00:12,000 --> 00:00:14,797
+Start with a static component you own.
+
+4
+00:00:14,797 --> 00:00:18,393
+This checkout looks correct with its short sample copy.
+
+5
+00:00:18,393 --> 00:00:21,191
+BREAK IT finds text and control slots.
+
+6
+00:00:21,191 --> 00:00:28,383
+You review the required content and layout rules before running
+anything: no overflow, no clipping, and visible, separated
+
+7
+00:00:28,383 --> 00:00:28,783
+buttons.
+
+8
+00:00:30,000 --> 00:00:38,120
+Muse Spark one point three creates adversarial content and viewport
+combinations, including compound Spanish names, long payment
+identifiers,
+
+9
+00:00:38,120 --> 00:00:40,375
+expanded disclosures, and narrow phones.
+
+10
+00:00:40,375 --> 00:00:44,435
+This recording used a fresh Meta Model API request.
+
+11
+00:00:44,435 --> 00:00:48,043
+The eight generated cases join one unchanged baseline.
+
+12
+00:00:48,043 --> 00:00:50,750
+Here are the real response receipts.
+
+13
+00:00:52,000 --> 00:00:54,786
+Playwright Chromium now renders all nine cases.
+
+14
+00:00:54,786 --> 00:00:57,572
+The model does not assign the grades.
+
+15
+00:00:57,572 --> 00:01:02,348
+The browser measures element bounds, text clipping, control overlap, and
+button visibility.
+
+16
+00:01:02,348 --> 00:01:03,542
+Seven scenarios fail.
+
+17
+00:01:03,542 --> 00:01:09,512
+In this example a customer name pushes content outside a three hundred
+sixty pixel viewport.
+
+18
+00:01:09,512 --> 00:01:12,696
+Every failure has measurements and a real capture.
+
+19
+00:01:14,000 --> 00:01:18,883
+We send Muse Spark the component, the failing measurements, and three
+actual screenshots.
+
+20
+00:01:18,883 --> 00:01:21,887
+It proposes CSS and explains the suspected causes.
+
+21
+00:01:21,887 --> 00:01:24,141
+You can inspect the complete diff.
+
+22
+00:01:24,141 --> 00:01:26,770
+The HTML and test pack remain locked.
+
+23
+00:01:26,770 --> 00:01:33,531
+If you edit the proposed CSS, the app changes its attribution so your
+edits cannot masquerade as untouched
+
+24
+00:01:33,531 --> 00:01:34,282
+model output.
+
+25
+00:01:38,000 --> 00:01:42,032
+Now replay the candidate against exactly the same inputs and assertions.
+
+26
+00:01:42,032 --> 00:01:46,797
+This run improves from two of nine scenarios passing to nine of nine.
+
+27
+00:01:46,797 --> 00:01:50,462
+Twenty five assertion failures are fixed, with no measured regression.
+
+28
+00:01:50,462 --> 00:01:53,394
+The matching pack hash makes the comparison auditable.
+
+29
+00:01:53,394 --> 00:01:59,625
+Passing means these declared layout checks passed on these cases, not
+that the application is universally correct.
+
+30
+00:02:02,000 --> 00:02:09,111
+Export the patch with its original component, locked scenarios,
+assertion logs, before and after screenshots, and model receipts.
+
+31
+00:02:09,111 --> 00:02:15,038
+The ZIP includes a standalone Chromium runner compiled from the same
+evaluator as the app.
+
+32
+00:02:15,038 --> 00:02:20,964
+Another developer can reproduce the failures and the candidate result
+without making another model call.
+
+33
+00:02:24,000 --> 00:02:29,667
+Built during this hackathon: slot instrumentation, Meta orchestration,
+layout checks, locked replay, and proof export.
+
+34
+00:02:29,667 --> 00:02:31,933
+React and Chromium are existing tools.
+
+35
+00:02:31,933 --> 00:02:36,844
+A separate boarding pass improved from zero of nine to nine of nine.
+
+36
+00:02:36,844 --> 00:02:38,733
+These are intentionally fragile examples.
+
+37
+00:02:38,733 --> 00:02:41,000
+The public repository includes replayable evidence.

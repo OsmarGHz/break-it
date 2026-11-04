@@ -32,4 +32,4 @@ Export the patch with its original component, locked scenarios, assertion logs, 
 
 ## 08. Find the break. Propose the patch. Prove it.
 
-We also checked a separate boarding pass example: zero of nine to nine of nine. These are intentionally fragile examples, not a broad benchmark. BREAK IT is a hackathon MVP for static HTML and CSS. The public repository includes the code and replayable evidence.
+Built during this hackathon: slot instrumentation, Meta orchestration, layout checks, locked replay, and proof export. React and Chromium are existing tools. A separate boarding pass improved from zero of nine to nine of nine. These are intentionally fragile examples. The public repository includes replayable evidence.

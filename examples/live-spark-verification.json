@@ -1,0 +1,222 @@
+{
+  "verifiedAt": "2026-11-04T22:49:53.604Z",
+  "health": {
+    "ok": true,
+    "metaConfigured": true,
+    "metaBaseUrl": "https://api.meta.ai/v1",
+    "metaSparkModel": "muse-spark-1.3",
+    "keySource": ".env.local"
+  },
+  "flows": {
+    "bundledCheckout": {
+      "flowKey": "checkout",
+      "componentName": "Checkout Order Summary Card (Fragile)",
+      "slotsCount": 12,
+      "assertionsCount": 13,
+      "scenariosCount": 9,
+      "scenarioReceipt": {
+        "receiptId": "rcpt_9d71123b-8a5",
+        "operation": "generate_scenarios",
+        "provider": "meta_model_api",
+        "endpoint": "https://api.meta.ai/v1/chat/completions",
+        "requestedModel": "muse-spark-1.3",
+        "respondedModel": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a8bf-9cf8-70f7-ac24-1a47358fdd40",
+        "timestamp": "2026-11-04T22:48:12.353Z",
+        "durationMs": 31144,
+        "reasoningEffort": "medium",
+        "imagesAttached": 0,
+        "usage": {
+          "promptTokens": 3190,
+          "completionTokens": 3555,
+          "totalTokens": 6745
+        },
+        "finishReason": "stop"
+      },
+      "patchReceipt": {
+        "receiptId": "rcpt_0bcd9d3c-015",
+        "operation": "propose_css_patch",
+        "provider": "meta_model_api",
+        "endpoint": "https://api.meta.ai/v1/chat/completions",
+        "requestedModel": "muse-spark-1.3",
+        "respondedModel": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a8c0-2743-7626-a027-e622a7f9e58d",
+        "timestamp": "2026-11-04T22:48:47.769Z",
+        "durationMs": 34696,
+        "reasoningEffort": "high",
+        "imagesAttached": 3,
+        "usage": {
+          "promptTokens": 15348,
+          "completionTokens": 4705,
+          "totalTokens": 20053
+        },
+        "finishReason": "stop"
+      },
+      "candidateId": "cand_4040b78c-d",
+      "candidateSource": "muse_spark",
+      "sparkGeneratedCssHash": "f1d15a7a8d441256",
+      "rationale": "Root causes: white-space:nowrap on customer-name, plan-title, plan-price, and CTA buttons prevented wrapping and pushed flex siblings outside the card; flex-shrink:0 on status-pill plus no min-width:0/wrap on header caused badge expulsion; fixed height:76px + overflow:hidden on plan-box vertically clipped multi-line Spanish disclosure and horizontally clipped long plan/price; plan-row space-between without flex-wrap squeezed price out; meta-grid 1fr 1fr without breakable tokens overflowed long ORD/SPEI refs; action-bar nowrap with nowrap buttons overflowed 320-360px viewports. Fixes: allow header/plan-row/action-bar to wrap (flex-wrap, align-items:flex-start), give customer-block/plan children/meta cells min-width:0 + flex bases, replace nowrap with white-space:normal + overflow-wrap:anywhere + word-break:break-word on all text slots, replace fixed height with min-height+height:auto and overflow:visible, make buttons flexible (secondary auto, primary flex:1 1 160px, max-width:100%) and stack to column + meta-grid to single column under 380px so CTAs stay 100% inside card with gap separation while preserving desktop aesthetics.",
+      "targetedFailures": [
+        "es-compound-customer-name: customer/badge viewport overflow and clipping",
+        "es-extended-plan-title: plan-title/price clipped by plan-box",
+        "es-disclosure-expansion-note: plan-note vertical clip by fixed-height plan-box",
+        "en-expanded-ctas-eyebrow: CTA viewport overflow and primary-CTA out-of-bounds",
+        "narrow-320-cta: 320px action-bar overflow",
+        "combined-worst-case-320: all slots + method/ref + CTA overflow on 320px"
+      ],
+      "originalRunId": "live_spark_checkout_orig",
+      "candidateRunId": "live_spark_checkout_cand",
+      "packHash": "532aae114a4c7fcc",
+      "packMatchesExactly": true,
+      "originalSummary": {
+        "totalScenarios": 9,
+        "passedScenarios": 3,
+        "failedScenarios": 6,
+        "inconclusiveScenarios": 0,
+        "errorScenarios": 0,
+        "totalAssertions": 117,
+        "passedAssertions": 96,
+        "failedAssertions": 21,
+        "inconclusiveAssertions": 0,
+        "errorAssertions": 0
+      },
+      "candidateSummary": {
+        "totalScenarios": 9,
+        "passedScenarios": 9,
+        "failedScenarios": 0,
+        "inconclusiveScenarios": 0,
+        "errorScenarios": 0,
+        "totalAssertions": 117,
+        "passedAssertions": 117,
+        "failedAssertions": 0,
+        "inconclusiveAssertions": 0,
+        "errorAssertions": 0
+      },
+      "comparisonSummary": {
+        "scenariosFixed": 6,
+        "scenariosRegressed": 0,
+        "scenariosStillFailing": 0,
+        "scenariosStillPassing": 3,
+        "scenariosInconclusiveOrError": 0,
+        "assertionsFixed": 21,
+        "assertionsRegressed": 0,
+        "assertionsStillFailing": 0,
+        "assertionsStillPassing": 96
+      },
+      "remainingFailures": [],
+      "exportBundle": {
+        "zipFile": "artifacts/live-spark-checkout-bundle.zip",
+        "zipBytes": 1746188,
+        "originalReproExitCode": 1,
+        "candidateReproExitCode": 0,
+        "exactParityVerified": true
+      }
+    },
+    "customBoardingPass": {
+      "flowKey": "custom_boarding",
+      "componentName": "Custom Airline Boarding Pass (Outside Bundled Fixtures)",
+      "slotsCount": 14,
+      "assertionsCount": 13,
+      "scenariosCount": 9,
+      "scenarioReceipt": {
+        "receiptId": "rcpt_1bcd089f-f16",
+        "operation": "generate_scenarios",
+        "provider": "meta_model_api",
+        "endpoint": "https://api.meta.ai/v1/chat/completions",
+        "requestedModel": "muse-spark-1.3",
+        "respondedModel": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a8c0-8f80-7460-8969-fde19dec82c9",
+        "timestamp": "2026-11-04T22:49:14.459Z",
+        "durationMs": 23725,
+        "reasoningEffort": "medium",
+        "imagesAttached": 0,
+        "usage": {
+          "promptTokens": 3428,
+          "completionTokens": 3038,
+          "totalTokens": 6466
+        },
+        "finishReason": "stop"
+      },
+      "patchReceipt": {
+        "receiptId": "rcpt_b6c8efca-109",
+        "operation": "propose_css_patch",
+        "provider": "meta_model_api",
+        "endpoint": "https://api.meta.ai/v1/chat/completions",
+        "requestedModel": "muse-spark-1.3",
+        "respondedModel": "muse-spark-1.3",
+        "responseId": "chatcmpl-01a1a8c1-1d8f-741c-9f0c-9ad92a513b58",
+        "timestamp": "2026-11-04T22:49:50.912Z",
+        "durationMs": 35823,
+        "reasoningEffort": "high",
+        "imagesAttached": 3,
+        "usage": {
+          "promptTokens": 19773,
+          "completionTokens": 4270,
+          "totalTokens": 24043
+        },
+        "finishReason": "stop"
+      },
+      "candidateId": "cand_4ae04c6d-0",
+      "candidateSource": "muse_spark",
+      "sparkGeneratedCssHash": "8fafe5d7ae7ad033",
+      "rationale": "Root causes: (1) content-box sizing made 410px + 40px padding + border =452px so even baseline overflowed viewport; fixed with border-box and max-width containment. (2) white-space:nowrap on name, kicker, pill, city, PNR token and buttons prevented wrapping and forced flex items to grow past card/viewport; replaced with white-space:normal + overflow-wrap:anywhere + word-break:break-word + min-width:0. (3) header and route-strip flex children had no min-width:0 / flex-shrink allowance and header had no wrapping, so long compound name pushed pill out; added flex-wrap:wrap, passenger-meta flex:1 1 160px min-width:0, pill flex:0 1 auto with wrapping, route airport-cols flex:1 1 0 min-width:0 with seat-col flex:0 0 auto. (4) PNR token unbroken string with nowrap in space-between row overflowed; made pnr-row flex-wrap:wrap and token flex:1 1 140px with anywhere breaking and right alignment. (5) gate-advisory height:40 + overflow:hidden vertically clipped Spanish expansion; changed to min-height:40 + height:auto + overflow:visible. (6) actions flex-wrap:nowrap + min-width:145/185px forced 340px row that overflowed 320px viewports; changed to flex-wrap:wrap with buttons flex:1 1 140px min-width:0 max-width:100% so they sit side-by-side on desktop but stack/wrap cleanly on narrow screens staying inside card with gap separation.",
+      "targetedFailures": [
+        "baseline viewport overflow (content-box sizing)",
+        "compound Latin name + gate-pill header overflow",
+        "320px CTA row overflow with fixed min-width buttons",
+        "unbroken e-ticket token overflow",
+        "Spanish disclosure vertical clipping (fixed 40px height)",
+        "long city-pair squeeze in route-strip",
+        "header kicker + pill expansion overflow",
+        "combined worst-case 320px overflow"
+      ],
+      "originalRunId": "live_spark_custom_boarding_orig",
+      "candidateRunId": "live_spark_custom_boarding_cand",
+      "packHash": "72d55879728a9241",
+      "packMatchesExactly": true,
+      "originalSummary": {
+        "totalScenarios": 9,
+        "passedScenarios": 0,
+        "failedScenarios": 9,
+        "inconclusiveScenarios": 0,
+        "errorScenarios": 0,
+        "totalAssertions": 117,
+        "passedAssertions": 79,
+        "failedAssertions": 38,
+        "inconclusiveAssertions": 0,
+        "errorAssertions": 0
+      },
+      "candidateSummary": {
+        "totalScenarios": 9,
+        "passedScenarios": 9,
+        "failedScenarios": 0,
+        "inconclusiveScenarios": 0,
+        "errorScenarios": 0,
+        "totalAssertions": 117,
+        "passedAssertions": 117,
+        "failedAssertions": 0,
+        "inconclusiveAssertions": 0,
+        "errorAssertions": 0
+      },
+      "comparisonSummary": {
+        "scenariosFixed": 9,
+        "scenariosRegressed": 0,
+        "scenariosStillFailing": 0,
+        "scenariosStillPassing": 0,
+        "scenariosInconclusiveOrError": 0,
+        "assertionsFixed": 38,
+        "assertionsRegressed": 0,
+        "assertionsStillFailing": 0,
+        "assertionsStillPassing": 79
+      },
+      "remainingFailures": [],
+      "exportBundle": {
+        "zipFile": "artifacts/live-spark-custom_boarding-bundle.zip",
+        "zipBytes": 1797061,
+        "originalReproExitCode": 1,
+        "candidateReproExitCode": 0,
+        "exactParityVerified": true
+      }
+    }
+  }
+}

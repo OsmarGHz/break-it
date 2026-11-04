@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env*
+!.env.example
+*.pem
+*.key
+.wrangler/
+.sites-runtime/
+.playwright/
+test-results/
+playwright-report/
+artifacts/
+work/
+.DS_Store
+*.log

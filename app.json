@@ -1,0 +1,39 @@
+{
+  "name": "BREAK IT",
+  "description": "Adversarial HTML/CSS stress lab. Real Muse Spark scenarios, Chromium measurements and locked replay proof.",
+  "repository": "https://github.com/OsmarGHz/break-it",
+  "keywords": [
+    "meta",
+    "muse-spark",
+    "playwright",
+    "css",
+    "testing"
+  ],
+  "stack": "container",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [],
+  "env": {
+    "MODEL_API_KEY": {
+      "description": "Your Meta Model API key. Stored server-side in Heroku Config Vars; never shared in chat or GitHub.",
+      "required": true
+    },
+    "DEMO_PASSWORD": {
+      "description": "Choose a separate demo access password. The login username is judge. Share only with intended reviewers; do not reuse your Meta key.",
+      "required": true
+    },
+    "META_BASE_URL": {
+      "value": "https://api.meta.ai/v1"
+    },
+    "META_SPARK_MODEL": {
+      "value": "muse-spark-1.3"
+    },
+    "BREAKIT_RENDER_CONCURRENCY": {
+      "value": "1"
+    }
+  }
+}

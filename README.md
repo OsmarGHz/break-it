@@ -59,7 +59,7 @@ npm run dev
 ## Verification & Test Commands
 
 ```bash
-# Run full Vitest suite (9/9 real Chromium tests, anti-evasion, P1 export parity, P2 provenance, network isolation)
+# Run 12 tests: Chromium checks, export parity, provenance, access protection and async jobs
 npm test
 
 # Run CLI verification of the fragile vs. corrected Checkout Card fixture pair in Chromium
@@ -146,6 +146,10 @@ Designed for a local, single-user workbench processing owned static components. 
 
 
 ## Heroku demo deployment (configuration prepared; not yet deployed)
+
+[Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
+
+The deployment form uses `app.json`: **one Basic web dyno, no add-ons**, with a Meta key and a separate demo password entered directly in Heroku. Review the billing estimate and verify any student credits before confirming. Basic currently costs up to US$7/month; a student's actual available monthly credit depends on their account. The container's memory footprint must be verified after deployment.
 
 Heroku can build the container remotely using `heroku.yml` on a **Cedar-generation** app with the `container` stack, so a local Docker installation is optional. Connect this GitHub repository in Heroku or deploy its main branch using Heroku Git after selecting that stack. See [Heroku's manifest instructions](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml).
 

@@ -1,0 +1,8 @@
+BREAK IT — actual app capture, edited to 45 seconds
+No audio. Real sampled browser capture of actual UI actions, fresh Meta calls, real Chromium execution, locked replay and ZIP export.
+Idle time and waits shortened; not an uncut real-time recording.
+Muse Spark 1.3 generation: 39.566 seconds; patch: 50.063 seconds with 3 real PNGs.
+Original: 2/9; candidate: 9/9; 28 assertion failures fixed; 0 measured regressions.
+Pack e14d972a500d55ce. Unmodified model candidate.
+Matching archive: BREAK-IT-X-real-app-evidence.zip
+The older YouTube demo and public archived-proof page show different actual runs.

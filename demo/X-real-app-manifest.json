@@ -1,0 +1,57 @@
+{
+  "tool": "BREAK IT",
+  "exportedAt": "2026-11-05T01:40:16.525Z",
+  "componentName": "Checkout Order Summary Card",
+  "componentHash": "df5718baca829d22",
+  "packHash": "e14d972a500d55ce",
+  "rootTargetId": "card-root",
+  "browserVersion": "Chromium 156.0.8078.4",
+  "originalRunSummary": {
+    "totalScenarios": 9,
+    "passedScenarios": 2,
+    "failedScenarios": 7,
+    "inconclusiveScenarios": 0,
+    "errorScenarios": 0,
+    "totalAssertions": 117,
+    "passedAssertions": 89,
+    "failedAssertions": 28,
+    "inconclusiveAssertions": 0,
+    "errorAssertions": 0
+  },
+  "candidateProvenance": {
+    "candidateId": "cand_9f3cb1e5-8",
+    "basedOnRunId": "run_mw2vha0j_3fe973",
+    "source": "muse_spark",
+    "originalCssHash": "b2df207637fe7e65",
+    "candidateCssHash": "d0e806c19eef99a1",
+    "sparkGeneratedCssHash": "d0e806c19eef99a1",
+    "modifiedAfterSparkProposal": false,
+    "directModelReceiptId": "rcpt_f9c5cff1-b0f",
+    "startingPointOriginReceiptId": null
+  },
+  "candidateRunSummary": {
+    "totalScenarios": 9,
+    "passedScenarios": 9,
+    "failedScenarios": 0,
+    "inconclusiveScenarios": 0,
+    "errorScenarios": 0,
+    "totalAssertions": 117,
+    "passedAssertions": 117,
+    "failedAssertions": 0,
+    "inconclusiveAssertions": 0,
+    "errorAssertions": 0
+  },
+  "comparisonSummary": {
+    "scenariosFixed": 7,
+    "scenariosRegressed": 0,
+    "scenariosStillFailing": 0,
+    "scenariosStillPassing": 2,
+    "scenariosInconclusiveOrError": 0,
+    "assertionsFixed": 28,
+    "assertionsRegressed": 0,
+    "assertionsStillFailing": 0,
+    "assertionsStillPassing": 89
+  },
+  "remainingFailures": [],
+  "scopeNotice": "Layout assertions verify geometric bounds, visibility, control separation, and overflow for the tested scenarios only. Passing does not certify full WCAG accessibility, security, or application logic."
+}

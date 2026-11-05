@@ -56,7 +56,7 @@ it('protects UI, artifacts, API writes and job results while permitting health c
   vi.stubEnv('DEMO_PASSWORD', 'test-review-password');
   const base = await listen(createApp({ customRoot: root }));
   expect((await fetch(`${base}/api/health`)).status).toBe(200);
-  for (const route of ['/', '/artifacts/receipts.json', '/api/receipts', '/api/jobs/known-id']) {
+  for (const route of ['/workbench', '/artifacts/receipts.json', '/api/receipts', '/api/jobs/known-id']) {
     expect((await fetch(base + route)).status).toBe(401);
   }
   expect((await fetch(`${base}/api/spark/scenarios`, { method: 'POST' })).status).toBe(401);
@@ -71,4 +71,32 @@ it('honors the platform port and refuses an unprotected Heroku deployment', () =
   vi.stubEnv('DYNO', 'web.1'); vi.stubEnv('PORT', '18347'); vi.stubEnv('DEMO_PASSWORD', '');
   expect(getServerConfig(root)).toMatchObject({ port: 18347, host: '0.0.0.0' });
   expect(() => createApp({ customRoot: root })).toThrow('Set DEMO_PASSWORD');
+});
+
+it('public review exposes only the recorded archive while Meta calls and private artifacts stay protected', async () => {
+  vi.stubEnv('DEMO_PASSWORD', 'test-public-review-password');
+  const modelFetch = vi.fn(async () => { throw new Error('Public review must never call a model'); });
+  const base = await listen(createApp({ customRoot: process.cwd(), fetchImpl: modelFetch as typeof fetch }));
+  expect((await fetch(base + '/', { redirect: 'manual' })).status).toBe(302);
+  expect((await fetch(base + '/')).status).toBe(200);
+  expect((await fetch(base + '/review')).status).toBe(200);
+  expect((await fetch(base + '/workbench')).status).toBe(401);
+  const dataResponse = await fetch(base + '/review/data.json');
+  expect(dataResponse.status).toBe(200);
+  expect(dataResponse.headers.get('WWW-Authenticate')).toBeNull();
+  const data = await dataResponse.json();
+  expect(data).toMatchObject({ recorded: true, packMatchesExactly: true, before: { passedScenarios: 3 }, after: { passedScenarios: 9 } });
+  expect(data.cases).toHaveLength(9);
+  const png = await fetch(base + data.cases[0].beforeImage);
+  expect(png.status).toBe(200);
+  expect(png.headers.get('Content-Type')).toContain('image/png');
+  expect((await fetch(base + '/review/evidence.zip')).status).toBe(200);
+  for (const route of ['/api/spark/scenarios', '/api/spark/patch', '/api/runs']) {
+    expect((await fetch(base + route, { method: 'POST' })).status).toBe(401);
+  }
+  expect((await fetch(base + '/artifacts/receipts.json')).status).toBe(401);
+  expect((await fetch(base + '/review/api/spark/patch', { method: 'POST' })).status).toBe(404);
+  expect((await fetch(base + '/review/screenshots/candidate/..%2F..%2F.env.local')).status).toBe(404);
+  expect((await fetch(base + '/review/.env.local')).status).toBe(404);
+  expect(modelFetch).not.toHaveBeenCalled();
 });

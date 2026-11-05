@@ -23,6 +23,7 @@ import {
 import { compareStressRuns, computeUnifiedCssDiff } from './comparison.js';
 import { computeCssHash } from './hashing.js';
 import { createDeferredJobs } from './jobs.js';
+import { createReviewRouter } from './review.js';
 import { buildReproducibleZipBundle } from './exporter.js';
 
 const SlotSchema = z.object({
@@ -95,6 +96,9 @@ export interface CreateAppOptions {
 export function createApp(options: CreateAppOptions = {}) {
   const app = express();
   app.disable('x-powered-by');
+  app.use('/review', createReviewRouter(getServerConfig(options.customRoot).projectRoot));
+  app.get('/', (_req, res) => res.redirect('/review'));
+  app.get('/favicon.ico', (_req, res) => res.status(204).end());
   const demoPassword = getServerConfig(options.customRoot).demoPassword;
   if (process.env.DYNO && !demoPassword) {
     throw new Error('Set DEMO_PASSWORD before starting a hosted demo.');

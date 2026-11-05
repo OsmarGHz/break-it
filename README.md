@@ -2,11 +2,11 @@
 
 **Find the content that breaks your UI. Then prove the fix.**
 
-[Hosted review demo](https://break-it-osmar-b946ca82c398.herokuapp.com/) · [Watch the 2:42 demo](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-demo.mp4) · [45-second cut](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-X-45s.mp4) · [Matching demo evidence ZIP](demo/recorded-demo-evidence.zip) · [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
+[Public recorded proof](https://break-it-osmar-b946ca82c398.herokuapp.com/review) · [Watch the 2:42 demo](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-demo.mp4) · [45-second cut](https://raw.githubusercontent.com/OsmarGHz/break-it/main/demo/BREAK-IT-X-45s.mp4) · [Matching demo evidence ZIP](demo/recorded-demo-evidence.zip) · [Deploy to Heroku](https://www.heroku.com/deploy?template=https://github.com/OsmarGHz/break-it)
 
 ![BREAK IT — real Meta candidate and Chromium proof](demo/preview.png)
 
-Hosted review access uses username **judge** and the separate demo password supplied privately to reviewers. Fresh Meta scenario generation, patching from 3 real PNGs, Chromium execution and ZIP export were verified on Heroku on November 4, 2026: **3/9 → 9/9**, 23 assertion failures fixed, 0 measured regressions. Pack `23f6981bb53e307b` is unchanged. The downloaded ZIP was independently replayed outside Heroku with the same 3/9 and 9/9 scores. [Hosted verification receipts](demo/heroku-verification.json) · [Hosted evidence ZIP](demo/heroku-evidence.zip).
+The public `/review` page shows archived real Meta/Chromium evidence without login: case selection, before/after PNGs, measured assertions, CSS diff, receipts, video and runnable ZIP. It is explicitly labeled a recorded execution and makes no new model calls. The owner workbench at `/workbench` uses username **judge** and the separate demo password; paid Meta calls and private runtime artifacts remain protected. The public-viewer update must be redeployed to the existing Heroku app after this source change. Fresh Meta scenario generation, patching from 3 real PNGs, Chromium execution and ZIP export were verified on Heroku on November 4, 2026: **3/9 → 9/9**, 23 assertion failures fixed, 0 measured regressions. Pack `23f6981bb53e307b` is unchanged. The downloaded ZIP was independently replayed outside Heroku with the same 3/9 and 9/9 scores. [Hosted verification receipts](demo/heroku-verification.json) · [Hosted evidence ZIP](demo/heroku-evidence.zip).
 
 The videos are edited actual app / Chromium captures with synthetic narration. The recorded demo uses fresh Meta calls and improves **2/9 → 9/9** on the same pack, fixing 25 assertion failures with 0 measured regressions. Its standalone ZIP was independently rerun. Earlier archived examples below have different generated packs and scores. This is declared-layout verification on intentionally fragile examples, not a general repair benchmark.
 
@@ -67,7 +67,7 @@ npm run dev
 ## Verification & Test Commands
 
 ```bash
-# Run 12 tests: Chromium checks, export parity, provenance, access protection and async jobs
+# Run 13 tests: Chromium checks, export parity, provenance, access protection and async jobs
 npm test
 
 # Run CLI verification of the fragile vs. corrected Checkout Card fixture pair in Chromium
@@ -142,7 +142,7 @@ docker build -t break-it .
 docker run --rm --init --ipc=host -p 127.0.0.1:4174:4174 --env-file .env.local break-it
 ```
 
-The Playwright image version matches the pinned package, following [Playwright's Docker guidance](https://playwright.dev/docs/next/docker). `.dockerignore` excludes credentials and local artifacts. The container runs as `pwuser`. Keep the loopback port binding for local use. Set DEMO_PASSWORD in the server environment to enable HTTP Basic access (username judge). Heroku startup requires this password. This MVP has no per-user quotas or multi-tenant isolation; share access only with intended reviewers. The hosted review demo above requires the separate access password.
+The Playwright image version matches the pinned package, following [Playwright's Docker guidance](https://playwright.dev/docs/next/docker). `.dockerignore` excludes credentials and local artifacts. The container runs as `pwuser`. Keep the loopback port binding for local use. Set DEMO_PASSWORD in the server environment to enable HTTP Basic access (username judge). Heroku startup requires this password. This MVP has no per-user quotas or multi-tenant isolation; share access only with intended reviewers. The owner workbench requires the separate access password; the archived proof viewer is public.
 
 ## What was built and what is reused
 
@@ -165,4 +165,4 @@ Set **Config Vars** in Heroku Settings (never in GitHub): `MODEL_API_KEY`, `DEMO
 
 The server honors Heroku's `PORT`, binds to `0.0.0.0` inside the container, stores transient artifacts in `/tmp/break-it`, and limits Chromium to one context at a time. The UI submits long operations as jobs (HTTP 202) and polls for results, avoiding Heroku's [30-second request timeout](https://devcenter.heroku.com/articles/request-timeout). Jobs and artifacts disappear on dyno restart; export the ZIP during the session. Use exactly one web dyno: this MVP has no shared job store.
 
-Reviewer access uses HTTPS + HTTP Basic authentication: username `judge`, password supplied privately with the submission. The health endpoint exposes configuration status, never credentials. The demo is for a few invited reviewers; it is not a public multi-user service.
+Owner workbench access uses HTTPS + HTTP Basic authentication: username `judge`, with the configured demo password. The public recorded proof requires no password, so public submission text must not include any credential. The health endpoint exposes configuration status, never credentials. The demo is for a few invited reviewers; it is not a public multi-user service.

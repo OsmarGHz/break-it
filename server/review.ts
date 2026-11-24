@@ -48,7 +48,7 @@ export function createReviewRouter(projectRoot: string) {
   });
   const publicFiles: Record<string, string> = {
     '/': 'review/index.html', '/ui.css': 'review/review.css', '/ui.js': 'review/review.js',
-    '/demo.mp4': 'demo/BREAK-IT-demo.mp4', '/preview.png': 'demo/preview.png',
+    '/demo.mp4': 'demo/app-walkthrough.mp4', '/preview.png': 'demo/preview.png',
   };
   for (const [route, file] of Object.entries(publicFiles)) {
     router.get(route, (_req, res) => res.sendFile(path.join(projectRoot, file)));

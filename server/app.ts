@@ -109,8 +109,8 @@ export function createApp(options: CreateAppOptions = {}) {
     const auth = req.get('Authorization') || '';
     const received = Buffer.from(auth.startsWith('Basic ') ? auth.slice(6) : '', 'base64');
     if (received.length === expected.length && crypto.timingSafeEqual(received, expected)) return next();
-    res.setHeader('WWW-Authenticate', 'Basic realm="BREAK IT demo", charset="UTF-8"');
-    res.status(401).send('Demo access required. Use the credentials included in the submission.');
+    res.setHeader('WWW-Authenticate', 'Basic realm="BREAK IT workbench", charset="UTF-8"');
+    res.status(401).send('Authentication required. Provide HTTP Basic credentials configured via DEMO_PASSWORD.');
   });
   app.use(express.json({ limit: '512kb' }));
   const { defer, status: jobStatus } = createDeferredJobs(text => redactSecrets(text, options.customRoot));
